@@ -1,20 +1,20 @@
-﻿using QuizApp.Models;
+﻿//using QuizApp.Models;
 
-namespace QuizApp.Services
-{
-    public class QuizService
-    {
-        private readonly Quiz _quiz;
+//namespace QuizApp.Services
+//{
+//    public class QuizService
+//    {
+//        private readonly Quiz _quiz;
 
-        public QuizService(Quiz quiz)
-        {
-            _quiz = quiz;
-        }
+//        public QuizService(Quiz quiz)
+//        {
+//            _quiz = quiz;
+//        }
 
-        public int CalculateScore(User user)
-        {
-            // Placeholder – później logika liczenia punktów
-            return user.Score;
-        }
-    }
-}
+//        public int CalculateScore(User user)
+//        {
+//            // Placeholder – później logika liczenia punktów
+//            return user.Score;
+//        }
+//    }
+//}
