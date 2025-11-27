@@ -4,13 +4,16 @@
     <Compile Update="Controls\QuestionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Forms\Controls\MenuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\Controls\QuizControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\Controls\ResultsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\QuizForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\ResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="QuizApp.cs">
