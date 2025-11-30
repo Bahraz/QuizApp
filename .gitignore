@@ -10,7 +10,7 @@ QuizConsole/bin/
 QuizConsole/obj/
 
 QuizWeb/appsettings.Development.json
-QuizWeb/QuizWebcsproj.user
+QuizWeb/QuizWeb.csproj.user
 
 QuizWPF/.vs/
 QuizWPF/bin/
