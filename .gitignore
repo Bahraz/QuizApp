@@ -11,6 +11,8 @@
 
 /QuizWeb/appsettings.Development.json
 /QuizWeb/QuizWeb.csproj.user
+/QuizWeb/bin/
+/QuizWeb/obj/
 
 /QuizWPF/.vs/
 /QuizWPF/bin/
