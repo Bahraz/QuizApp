@@ -1,3 +1,5 @@
+.vs/
+.github/
 
 QuizApp.Data/.vs/
 QuizApp.Data/bin/
@@ -7,13 +9,9 @@ QuizConsole/.vs/
 QuizConsole/bin/
 QuizConsole/obj/
 
-QuizWeb/.vs/
-QuizWeb/bin/
-QuizWeb/obj/
+QuizWeb/appsettings.Development.json
+QuizWeb/QuizWebcsproj.user
 
 QuizWPF/.vs/
 QuizWPF/bin/
 QuizWPF/obj/
-
-.vs/
-
