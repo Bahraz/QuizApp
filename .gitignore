@@ -1,17 +1,17 @@
 .vs/
 .github/
 
-QuizApp.Data/.vs/
-QuizApp.Data/bin/
-QuizApp.Data/obj/
+/QuizApp.Data/.vs/
+/QuizApp.Data/bin/
+/QuizApp.Data/obj/
 
-QuizConsole/.vs/
-QuizConsole/bin/
-QuizConsole/obj/
+/QuizConsole/.vs/
+/QuizConsole/bin/
+/QuizConsole/obj/
 
-QuizWeb/appsettings.Development.json
-QuizWeb/QuizWeb.csproj.user
+/QuizWeb/appsettings.Development.json
+/QuizWeb/QuizWeb.csproj.user
 
-QuizWPF/.vs/
-QuizWPF/bin/
-QuizWPF/obj/
+/QuizWPF/.vs/
+/QuizWPF/bin/
+/QuizWPF/obj/
