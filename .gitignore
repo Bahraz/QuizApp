@@ -1,5 +1,19 @@
 
-App/.vs/
+QuizApp.Data/.vs/
+QuizApp.Data/bin/
+QuizApp.Data/obj/
+
+QuizConsole/.vs/
+QuizConsole/bin/
+QuizConsole/obj/
+
+QuizWeb/.vs/
+QuizWeb/bin/
+QuizWeb/obj/
+
+QuizWPF/.vs/
+QuizWPF/bin/
+QuizWPF/obj/
+
 .vs/
-App/bin/
-App/obj/
+

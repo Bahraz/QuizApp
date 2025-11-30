@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../QuizConsole/QuizConsole.csproj" />
+  <Project Path="../QuizWeb/QuizWeb.csproj" />
+  <Project Path="../QuizWPF/QuizWPF.csproj" />
+  <Project Path="QuizApp.Data.csproj" />
+</Solution>
