@@ -1,40 +1,47 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using QuizApp.Data.Context;// Poprawna przestrzeń nazw dla QuizDbContext
-using QuizApp.Data.Models;   // Poprawna przestrzeń nazw dla modeli
+using QuizApp.ConsoleAdmin.Menu;
+using QuizApp.Data;
+using QuizApp.Data.Repositories;
+using System.IO;
 
-namespace QuizApp.ConsoleApp
+class Program
 {
-    internal class Program
+    static async Task Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            // Wczytanie appsettings.json z katalogu startowego
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
+        //
+        // 🔥 1. Wczytanie appsettings.json
+        //
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())  // katalog aplikacji konsolowej
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
 
-            // Utworzenie opcji DbContext
-            var options = new DbContextOptionsBuilder<QuizDbContext>()
-                .UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
-                .Options;
+        //
+        // 🔥 2. Pobranie connection string
+        //
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            // Utworzenie DbContext
-            using var context = new QuizDbContext(options);
+        //
+        // 🔥 3. Tworzymy DbContext tak samo jak Fabryka
+        //
+        var options = new DbContextOptionsBuilder<QuizDbContext>()
+            .UseSqlServer(connectionString)
+            .Options;
 
-            // Testowe pobranie wszystkich quizów
-            var quizzes = context.Quizzes.ToList();
-            Console.WriteLine("Lista quizów w bazie:");
-            foreach (var quiz in quizzes)
-            {
-                Console.WriteLine($"Quiz: {quiz.Title} (Id: {quiz.Id})");
-            }
+        using var db = new QuizDbContext(options);
 
-            Console.WriteLine("Gotowe. Naciśnij dowolny klawisz...");
-            Console.ReadKey();
-        }
+        //
+        // 🔥 4. Tworzymy repozytoria
+        //
+        var quizRepo = new QuizRepository(db);
+        var questionRepo = new QuestionRepository(db);
+        var answerRepo = new AnswerRepository(db);
+
+        //
+        // 🔥 5. Uruchamiamy menu
+        //
+        var mainMenu = new MainMenu(quizRepo, questionRepo, answerRepo);
+        await mainMenu.RunAsync();
     }
 }

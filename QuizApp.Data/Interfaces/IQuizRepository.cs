@@ -1,14 +1,19 @@
-﻿using QuizApp.Data.Models;
-using System;
+﻿using QuizApp.Data.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace QuizApp.Data.Interfaces
 {
-    public interface IQuizRepository : IRepository<Quiz>
+    public interface IQuizRepository
     {
-        Task<Quiz> GetQuizWithQuestionsAsync(int id);
+        Task AddAsync(Quiz quiz);
+        void Remove(Quiz quiz);
+        Task SaveChangesAsync();
+
+        Task<Quiz?> GetByIdAsync(int idQuiz);
+        Task<Quiz?> GetByNameAsync(string name);
+        Task<Quiz?> GetQuizWithQuestionsAsync(int idQuiz);
+        Task<Quiz?> GetQuizWithQuestionsAndAnswersAsync(int idQuiz);
+        IEnumerable<Quiz> GetAll();
     }
 }
