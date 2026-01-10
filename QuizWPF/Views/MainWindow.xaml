@@ -1,0 +1,59 @@
+﻿<Window x:Class="QuizWPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quiz Browser"
+        Height="450"
+        Width="800">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Quizzes}"
+                 SelectedItem="{Binding SelectedQuiz}"
+                 DisplayMemberPath="CategoryName" />
+
+        <ListBox Grid.Column="1"
+                 ItemsSource="{Binding Questions}"
+                 SelectedItem="{Binding SelectedQuestion}"
+                 DisplayMemberPath="Contents" />
+
+
+        <ListBox Grid.Column="2"
+                 ItemsSource="{Binding Answers}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="4">
+                        <TextBlock Text="{Binding Text}"/>
+
+                        <TextBlock FontSize="11">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text"
+                                    Value="Fałsz"/>
+                                    <Setter Property="Foreground"
+                                    Value="Red"/>
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsTrue}"
+                                             Value="True">
+                                            <Setter Property="Text"
+                                            Value="Prawda"/>
+                                            <Setter Property="Foreground"
+                                            Value="Green"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

@@ -12,7 +12,6 @@ public class QuizDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Klucze główne
         modelBuilder.Entity<Quiz>()
             .HasKey(q => q.IdQuiz);
 
@@ -22,7 +21,6 @@ public class QuizDbContext : DbContext
         modelBuilder.Entity<Answer>()
             .HasKey(a => a.IdAnswer);
 
-        // Relacje i kaskadowe usuwanie
         modelBuilder.Entity<Quiz>()
             .HasMany(q => q.Questions)
             .WithOne(q => q.Quiz)
@@ -35,7 +33,6 @@ public class QuizDbContext : DbContext
             .HasForeignKey(a => a.IdQuestion)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Wymuszenie, że CategoryName nie może być null
         modelBuilder.Entity<Quiz>()
             .Property(q => q.CategoryName)
             .IsRequired();
