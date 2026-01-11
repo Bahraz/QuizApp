@@ -1,0 +1,30 @@
+﻿@page "{id:int}"
+@model QuizWeb.Pages.Quizzes.QuizStartModel
+@{
+    <h2>@Model.QuizName</h2>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        @foreach (var q in Model.Questions)
+        {
+            <fieldset>
+                <legend>@q.Contents</legend>
+
+                @foreach (var a in q.Answers)
+                {
+                    <label>
+                        <input type="radio"
+                               name="Answers[@q.IdQuestion]"
+                               value="@a.IdAnswer"
+                               required />
+                        @a.Text
+                    </label>
+                    <br />
+                }
+            </fieldset>
+            <br />
+        }
+
+        <button type="submit">Zakończ</button>
+    </form>
+}

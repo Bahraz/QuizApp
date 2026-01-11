@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 
+//Zapytania LINQ + operacje CRUD dla encji Quiz
 namespace QuizApp.Data.Repositories
 {
     public class QuizRepository : IQuizRepository

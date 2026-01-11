@@ -5,16 +5,18 @@ namespace QuizWeb.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public string UserName { get; set; } = "";
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public void OnGet() { }
+
+        public IActionResult OnPost()
         {
-            _logger = logger;
-        }
+            Console.WriteLine("=== INDEX ONPOST HIT ===");
+            Console.WriteLine($"USERNAME FROM FORM = '{UserName}'");
 
-        public void OnGet()
-        {
-
+            HttpContext.Session.SetString("UserName", UserName);
+            return RedirectToPage("/Quizzes/Index");
         }
     }
 }

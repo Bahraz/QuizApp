@@ -9,7 +9,6 @@ namespace QuizApp.Data.Interfaces
         Task AddAsync(Quiz quiz);
         void Remove(Quiz quiz);
         Task SaveChangesAsync();
-
         Task<Quiz?> GetByIdAsync(int idQuiz);
         Task<Quiz?> GetByNameAsync(string name);
         Task<Quiz?> GetQuizWithQuestionsAsync(int idQuiz);

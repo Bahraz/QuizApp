@@ -1,0 +1,82 @@
+﻿@namespace QuizWeb.Components
+
+@inject IQuizRepository QuizRepo
+@inject IAnswerRepository AnswerRepo
+@inject NavigationManager Nav
+
+@if (questions.Count == 0)
+{
+    <p>Ładowanie quizu...</p>
+}
+else
+{
+    @foreach (var q in questions)
+    {
+        <fieldset>
+            <legend>@q.Contents</legend>
+
+            @foreach (var a in q.Answers)
+            {
+                <label>
+                    <input type="radio"
+                           name="@($"q{q.IdQuestion}")"
+                           @onchange="() => SelectAnswer(q.IdQuestion, a.IdAnswer)" />
+                    @a.Text
+                </label>
+                <br />
+            }
+        </fieldset>
+        <br />
+    }
+
+    <button @onclick="Finish">Zakończ</button>
+}
+
+@code {
+    [Parameter]
+    public int QuizId { get; set; }
+
+    private List<Question> questions = new();
+    private Dictionary<int, int> answers = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var quiz = await QuizRepo.GetQuizWithQuestionsAndAnswersAsync(QuizId);
+        if (quiz == null)
+            return;
+
+        questions = quiz.Questions
+            .OrderBy(q => Guid.NewGuid())
+            .Take(5)
+            .Select(q =>
+            {
+                q.Answers = q.Answers
+                    .OrderBy(a => Guid.NewGuid())
+                    .ToList();
+                return q;
+            })
+            .ToList();
+    }
+
+    private void SelectAnswer(int questionId, int answerId)
+    {
+        answers[questionId] = answerId;
+    }
+
+    private async Task Finish()
+    {
+        int score = 0;
+
+        foreach (var answerId in answers.Values)
+        {
+            var answer = await AnswerRepo.GetByIdAsync(answerId);
+            if (answer?.IsTrue == true)
+                score++;
+        }
+
+        Nav.NavigateTo(
+            $"/Quizzes/Result?score={score}&total={answers.Count}",
+            forceLoad: true
+        );
+    }
+}

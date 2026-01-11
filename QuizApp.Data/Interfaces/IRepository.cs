@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 
+// Uniwersalny CRUD dla każdego interfejsu repozytorium
 namespace QuizApp.Data.Interfaces
 {
     public interface IRepository<T> where T : class

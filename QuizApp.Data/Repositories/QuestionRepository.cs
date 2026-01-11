@@ -2,6 +2,7 @@
 using QuizApp.Data.Entities;
 using QuizApp.Data.Interfaces;
 
+//Zapytania LINQ + operacje CRUD dla encji Quiz
 namespace QuizApp.Data.Repositories
 {
     public class QuestionRepository : RepositoryBase<Question>, IQuestionRepository

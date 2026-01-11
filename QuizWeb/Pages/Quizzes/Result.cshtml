@@ -1,0 +1,12 @@
+﻿@page
+@model QuizWeb.Pages.Quizzes.ResultModel
+@{
+    <h2>Wynik</h2>
+
+    <p>
+        @Model.UserName, Twój wynik:
+        <strong>@Model.Score / @Model.Total</strong>
+    </p>
+
+    <a href="/Quizzes/Index">Wybierz inny quiz</a>
+}

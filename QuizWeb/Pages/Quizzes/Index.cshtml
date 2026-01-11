@@ -1,0 +1,16 @@
+﻿@page
+@model QuizWeb.Pages.Quizzes.QuizIndexModel
+@{
+    <h2>Wybierz quiz</h2>
+
+    <ul>
+        @foreach (var quiz in Model.Quizzes)
+        {
+            <li>
+                <a href="/Quizzes/Start/@quiz.IdQuiz">
+                    @quiz.CategoryName
+                </a>
+            </li>
+        }
+    </ul>
+}

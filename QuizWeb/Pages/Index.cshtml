@@ -1,10 +1,13 @@
 ﻿@page
-@model IndexModel
+@model QuizWeb.Pages.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "Home page";
-}
+    <h2>Quiz App</h2>
+    <p>Podaj swoje imię:</p>
+    <form method="post">
+        @Html.AntiForgeryToken()
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <input asp-for="UserName" required />
+        <button type="submit">Dalej</button>
+    </form>
+}
